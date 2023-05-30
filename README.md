@@ -4,7 +4,7 @@ Data and methods to analayse to identify factors associated with planning of hol
 The repository include the following files: 
 
 ## Data
-*holiday_home_data_variable_description* Metadata: description of the variables included in the analysis
+*holiday_home_data_variable_description.csv* Metadata: description of the variables included in the analysis
 
 *holiday_home_data.csv* 
   Holiday home data and co-variates for 356 municipalities in Norway.
