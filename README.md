@@ -14,3 +14,5 @@ The repository include the following files:
 - z_mountain_data.csv. holiday home data and co-variates for 97 municipalities in Norway. Predictor variables are transformed to z-scores.
 
 - zs_mountain_data.csv. Holiday home data and co-variates for 97 municipalities in Norway. Skewed predictor variables are transformed to reduce skewness, and predictor variables are then transformed to z-scores.
+
+- multivariate_analysis_mountains.R Multivariate analysis of data for mountain municipalities
