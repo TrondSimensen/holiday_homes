@@ -20,7 +20,7 @@ library(rnorsk) # for regression diagnostics
 Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Original data, entire country
-data_complete <- read.csv("holiday_home_data.csv", 
+data_complete <- read.csv("data/holiday_home_data.csv", 
 	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
 
 data_complete$region <- as.character(data_complete$region)
@@ -36,21 +36,21 @@ glimpse(data_complete)
 # 3) zs_data, where some of the response variables are  skewness-transformed (log), 
 # proportions are logit-transformed, and all responses finally transformed to z-scores
 
-data <- read.csv("mountain_data.csv", 
+data <- read.csv("data/mountain_data.csv", 
 	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 data$region <- as.character(data$region)
 glimpse(data)
 data <- data |> dplyr::select(-hh_category)
 
 # z_data, where the response variables (except dummy variables), are transformed to z-scores
-z_data <- read.csv("z_mountain_data.csv", 
+z_data <- read.csv("data/z_mountain_data.csv", 
 	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 z_data$region <- as.character(z_data$region)
 glimpse(z_data)
 
 # zs_data, where some of the response variables are  skewness-transformed (log), 
 # proportions are logit-transformed, and all responses finally transformed to z-scores
-zs_data <- read.csv("zs_mountain_data.csv", 
+zs_data <- read.csv("data/zs_mountain_data.csv", 
 	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 zs_data$region <- as.character(zs_data$region)
 glimpse(zs_data)
@@ -65,6 +65,13 @@ data_num
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
 corrplot(correlations, method = 'number', order = "hclust")
+
+# Correlation matrix for subgroup
+economy <- data_num[,22:27]
+economy
+corr_economy <- round(cor(economy, method = "kendall"),2)
+corr_economy
+corrplot(corr_economy, method = 'number', order = "hclust")
 # write.csv(correlations, file = "correlations_mountains.csv", row.names = FALSE)
 
 # Extract response variables ---------------------------------------------------------

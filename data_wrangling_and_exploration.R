@@ -116,6 +116,7 @@ summary_cor_with_response
 
 # Print the updated dataframe
 print(summary_cor_with_response)
+write.csv(summary_cor_with_response, file = "supplementary_material/correlations_with_response_variables_mountain.csv", row.names = FALSE)
 
 # Write the output from summary_cor_with_response to the clipboard
 write.table(summary_cor_with_response, file = "clipboard", sep = "\t", row.names = FALSE)
@@ -139,18 +140,17 @@ c_data
 
 # Explore data ------------------------------------------------------------
 
-
 c_data
-glimpse(c_data)
+dplyr::glimpse(c_data)
 
-na_counts <- c_data %>% summarize(across(everything(), ~ sum(is.na(.))))
+na_counts <- c_data %>% dplyr::summarize(across(everything(), ~ sum(is.na(.))))
 glimpse(na_counts)
 
 # Impute missing data in predictor variables
 c_data <- c_data %>%
-  mutate_all(~ ifelse(is.na(.), mean(., na.rm = TRUE), .))
+  dplyr::mutate_all(~ ifelse(is.na(.), mean(., na.rm = TRUE), .))
 
-na_counts <- c_data %>% summarize(across(everything(), ~ sum(is.na(.))))
+na_counts <- c_data %>% dplyr::summarize(across(everything(), ~ sum(is.na(.))))
 glimpse(na_counts)
 
 # Check data
@@ -291,7 +291,7 @@ hist(logit(c_data$prop_farm_residents))
 # Now prepare transformed variables based on the exploration
 
 # Complete, transformed data = ct_data
-ct_data <- c_data |> mutate(
+ct_data <- c_data |> dplyr::mutate(
 	region = region, 
 	municipality = municipality, 
 	county = county, 
@@ -346,7 +346,7 @@ ct_data <- ct_data %>%
 # Z-score transformation --------------------------------------------------
 glimpse(ct_data)
 
-transform_recipe <- recipe( ~ ., data = ct_data) #CRN: package missing for this function
+transform_recipe <- recipes::recipe( ~ ., data = ct_data) 
 
 # Z-score-transformation (except outcome and dummy variables)
 model_recipe_steps <- transform_recipe %>%
@@ -360,9 +360,10 @@ model_recipe_steps <- transform_recipe %>%
 # # fit recipe to data and preprocess
 # z-score transformed and skewness-transformed data:
 # zs_data
-zs_data <- bake(model_recipe_steps, new_data = NULL)
+zs_data <- recipes::bake(model_recipe_steps, new_data = NULL)
 zs_data
 glimpse(zs_data)
+
 
 zs_data [,1:19] %>%
   keep(is.numeric) %>% 
@@ -424,9 +425,9 @@ z_data
 
 
 # Data for mountain municipalities
-write.csv(c_data, file = "C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/mountain_data.csv", row.names = FALSE)
-write.csv(z_data, file = "C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/z_mountain_data.csv", row.names = FALSE)
-write.csv(zs_data, file = "C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/zs_mountain_data.csv", row.names = FALSE)
+write.csv(c_data, file = "data/mountain_data.csv", row.names = FALSE)
+write.csv(z_data, file = "data/z_mountain_data.csv", row.names = FALSE)
+write.csv(zs_data, file = "data/zs_mountain_data.csv", row.names = FALSE)
 
 
 # Exploring ---------------------------------------------------------------

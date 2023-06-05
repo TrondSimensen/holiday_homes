@@ -21,7 +21,7 @@ library(factoextra)#derive results from prcomp, pca
 Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Original data, entire country
-data_complete <- read.csv("holiday_home_data.csv", 
+data_complete <- read.csv("data/holiday_home_data.csv", 
 	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
 
 data_complete$region <- as.character(data_complete$region)
@@ -37,7 +37,7 @@ glimpse(data_complete)
 # 3) zs_data, where some of the response variables are  skewness-transformed (log), 
 # proportions are logit-transformed, and all responses finally transformed to z-scores
 
-data <- read.csv("mountain_data.csv", 
+data <- read.csv("data/mountain_data.csv", 
 	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 data$region <- as.character(data$region)
 glimpse(data)
