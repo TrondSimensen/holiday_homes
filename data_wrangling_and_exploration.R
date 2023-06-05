@@ -34,8 +34,9 @@ glimpse(na_counts)
 data <- data |> filter(municipality != "Rana", municipality != "Snåase - Snåsa")
 
 # Correlation matrix ------------------------------------------------------
+# Omitting non-numerical variables
 data_num <- data |> dplyr::select(-hh_category, -holiday_homes, -future_hh_area,
-	-region, -municipality, -county, -coast) |> na.omit() # CRN: unclear why these columns get dropped
+	-region, -municipality, -county, -coast) |> na.omit() 
 
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
