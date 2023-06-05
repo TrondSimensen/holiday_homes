@@ -8,7 +8,7 @@ library(kableExtra) # to make tables
 Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Reading in data
-data <- read.csv("C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/holiday_home_data.csv", 
+data <- read.csv("holiday_home_data.csv", 
 	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
 
 # Recoding variables and variable types
@@ -35,13 +35,12 @@ data <- data |> filter(municipality != "Rana", municipality != "Snåase - Snåsa
 
 # Correlation matrix ------------------------------------------------------
 data_num <- data |> dplyr::select(-hh_category, -holiday_homes, -future_hh_area,
-	-region, -municipality, -county, -coast) |> na.omit()
+	-region, -municipality, -county, -coast) |> na.omit() # CRN: unclear why these columns get dropped
 
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
 corrplot(correlations, method = 'number', order = "hclust")
-# write.csv(correlations, 
-#   file = "P:/15022000_egenutvikling_trond_simensen/Spatial_regression/Tomtereserver_analyse/correlations_mountains.csv", row.names = FALSE)
+# write.csv(correlations, file = "correlations_mountains.csv", row.names = FALSE)
 
 # Extract response variables ---------------------------------------------------------
 response1 <- data |> dplyr::select(holiday_homes) 
@@ -59,7 +58,7 @@ cor_summary <- data.frame(variable = character(),
                           p_value_t1 = character(),
                           stringsAsFactors = FALSE)
 
-# Perform Kendall correlation test for each variable
+# Perform Kendall correlation test of response with each variable
 for (col_name in names(dat)) {
   if (col_name != "holiday_homes") {
     result <- cor.test(dat$holiday_homes, dat[[col_name]], method = "kendall")
@@ -83,7 +82,7 @@ cor_summary <- data.frame(variable = character(),
                           p_value_t2 = character(),
                           stringsAsFactors = FALSE)
 
-# Perform Kendall correlation test for each variable
+# Perform Kendall correlation test of respons with each variable
 for (col_name in names(dat)) {
   if (col_name != "future_hh_area") {
     result <- cor.test(dat$future_hh_area, dat[[col_name]], method = "kendall")
@@ -118,7 +117,7 @@ summary_cor_with_response
 print(summary_cor_with_response)
 
 # Write the output from summary_cor_with_response to the clipboard
-write.table(summary_cor_with_responses, file = "clipboard", sep = "\t", row.names = FALSE)
+write.table(summary_cor_with_response, file = "clipboard", sep = "\t", row.names = FALSE)
 
 # Recommended preprocessing outline
 # Order of datawrangling steps before modeling:
@@ -346,7 +345,7 @@ ct_data <- ct_data %>%
 # Z-score transformation --------------------------------------------------
 glimpse(ct_data)
 
-transform_recipe <- recipe( ~ ., data = ct_data)
+transform_recipe <- recipe( ~ ., data = ct_data) #CRN: package missing for this function
 
 # Z-score-transformation (except outcome and dummy variables)
 model_recipe_steps <- transform_recipe %>%

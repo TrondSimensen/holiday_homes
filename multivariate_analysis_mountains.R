@@ -21,7 +21,7 @@ library(factoextra)#derive results from prcomp, pca
 Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Original data, entire country
-data_complete <- read.csv("C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/holiday_home_data.csv", 
+data_complete <- read.csv("holiday_home_data.csv", 
 	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
 
 data_complete$region <- as.character(data_complete$region)
@@ -37,7 +37,7 @@ glimpse(data_complete)
 # 3) zs_data, where some of the response variables are  skewness-transformed (log), 
 # proportions are logit-transformed, and all responses finally transformed to z-scores
 
-data <- read.csv("C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/mountain_data.csv", 
+data <- read.csv("mountain_data.csv", 
 	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 data$region <- as.character(data$region)
 glimpse(data)
@@ -97,7 +97,7 @@ hytter_recipe <-
 	# remove predictor variables that are almost the same for every entry
   step_nzv(all_predictors()) |> 
   step_pca(all_numeric(), id = "pca") %>% 
-  prep()
+  prep() # CRN: package for function "prep" missing?
 
 #data_t <- data |> select(-region, -municipality, -county, -kyst_f, -hyttekomtype, -KDP_natur)
 data_t <- data |> dplyr::select(where(is.numeric)) 
