@@ -97,7 +97,7 @@ hytter_recipe <-
 	# remove predictor variables that are almost the same for every entry
   step_nzv(all_predictors()) |> 
   step_pca(all_numeric(), id = "pca") %>% 
-  prep()
+  prep() # CRN: package for function "prep" missing?
 
 #data_t <- data |> select(-region, -municipality, -county, -kyst_f, -hyttekomtype, -KDP_natur)
 data_t <- data |> dplyr::select(where(is.numeric)) 

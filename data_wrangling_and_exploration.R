@@ -35,7 +35,7 @@ data <- data |> filter(municipality != "Rana", municipality != "Snåase - Snåsa
 
 # Correlation matrix ------------------------------------------------------
 data_num <- data |> dplyr::select(-hh_category, -holiday_homes, -future_hh_area,
-	-region, -municipality, -county, -coast) |> na.omit()
+	-region, -municipality, -county, -coast) |> na.omit() # CRN: unclear why these columns get dropped
 
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
@@ -58,7 +58,7 @@ cor_summary <- data.frame(variable = character(),
                           p_value_t1 = character(),
                           stringsAsFactors = FALSE)
 
-# Perform Kendall correlation test for each variable
+# Perform Kendall correlation test of response with each variable
 for (col_name in names(dat)) {
   if (col_name != "holiday_homes") {
     result <- cor.test(dat$holiday_homes, dat[[col_name]], method = "kendall")
@@ -82,7 +82,7 @@ cor_summary <- data.frame(variable = character(),
                           p_value_t2 = character(),
                           stringsAsFactors = FALSE)
 
-# Perform Kendall correlation test for each variable
+# Perform Kendall correlation test of respons with each variable
 for (col_name in names(dat)) {
   if (col_name != "future_hh_area") {
     result <- cor.test(dat$future_hh_area, dat[[col_name]], method = "kendall")
@@ -117,7 +117,7 @@ summary_cor_with_response
 print(summary_cor_with_response)
 
 # Write the output from summary_cor_with_response to the clipboard
-write.table(summary_cor_with_responses, file = "clipboard", sep = "\t", row.names = FALSE)
+write.table(summary_cor_with_response, file = "clipboard", sep = "\t", row.names = FALSE)
 
 # Recommended preprocessing outline
 # Order of datawrangling steps before modeling:
@@ -345,7 +345,7 @@ ct_data <- ct_data %>%
 # Z-score transformation --------------------------------------------------
 glimpse(ct_data)
 
-transform_recipe <- recipe( ~ ., data = ct_data)
+transform_recipe <- recipe( ~ ., data = ct_data) #CRN: package missing for this function
 
 # Z-score-transformation (except outcome and dummy variables)
 model_recipe_steps <- transform_recipe %>%
