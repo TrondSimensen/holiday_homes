@@ -8,7 +8,7 @@ library(kableExtra) # to make tables
 Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Reading in data
-data <- read.csv("C:/Users/trond.simensen/OneDrive - NINA/Documents/R/holiday_homes/holiday_home_data.csv", 
+data <- read.csv("holiday_home_data.csv", 
 	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
 
 # Recoding variables and variable types
@@ -40,8 +40,7 @@ data_num <- data |> dplyr::select(-hh_category, -holiday_homes, -future_hh_area,
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
 corrplot(correlations, method = 'number', order = "hclust")
-# write.csv(correlations, 
-#   file = "P:/15022000_egenutvikling_trond_simensen/Spatial_regression/Tomtereserver_analyse/correlations_mountains.csv", row.names = FALSE)
+# write.csv(correlations, file = "correlations_mountains.csv", row.names = FALSE)
 
 # Extract response variables ---------------------------------------------------------
 response1 <- data |> dplyr::select(holiday_homes) 
