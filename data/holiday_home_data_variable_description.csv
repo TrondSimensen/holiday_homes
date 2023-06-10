@@ -1,41 +1,41 @@
-Category;Old abbreviation;Abbreviation;Variable;Description;Variable category;Statistical variable category;Unit;Original source;Details;Access original source;Norsk forklaring
-Basic information;region;region;Municipal number;Municipal number code;Holiday homes;Nominal;Administrative unit;Statistics Norway;Classification standard 131;https://www.ssb.no/klass/klassifikasjoner/131;SSB kommunenummer
-Basic information;kommune;municipality;Municipality;Municipalities according to the 2020 division;Holiday homes;Nominal;Administrative unit;Statistics Norway;Classification standard 131;https://www.ssb.no/klass/klassifikasjoner/131;
-Basic information;fylke;county;County;Counties according to the 2020 division;Holiday homes;Nominal;Administrative unit;Statistics Norway;Classification standard 106;https://www.ssb.no/klass/klassifikasjoner/104;Fylke etter inndeling fra 2020
-Basic information;kyst;coast;Coast;Indicates whether the municipality is a coastal municipality (1) or a municipality without a coastline (0);Geography;Dummy;0/1;Norwegian mappping Authority;Available upon request;NA;
-Basic information;hyttekomtype;hh_category;"Type of second home municipality; coast, forest, mountain";Holiday home municipality type: mountain, forest or coastal;Holiday homes;Nominal;Holiday home type;Statistics Norway;;https://www.ssb.no/bygg-bolig-og-eiendom/eiendom/statistikk/eiendomsomsetning/artikler/hemsedal-hadde-de-dyreste-fjellhyttene;Hyttekommunetype: fjell, skog eller kyst
-Basic information;landareal;land_area;Municipal land area;Municipal land area in square kilometers;Geography;Numerical, continuous;Km2;Statistics Norway;Table 09280;https://www.ssb.no/en/statbank/table/09280/;Kommunens landareal i kvadratkilometer
-Holiday homes;fribygg;holiday_homes;Holiday homes;Number of holiday homes 2022, data from Statistics Norway (SSB);Holiday homes;Numerical, integer;Holiday homes;Statistics Norway;Table 05467;ssb.no/statbank/table/05467/;Antall eksisterende fritidsboliger i kommunen 2022
-Holiday homes;tomteres_km2;future_hh_area;Future holiday homes, total areas including estimations;Total plot reserve, including new planned cabin areas and available plots in partially developed cabin areas, including estimations for missing value;Holiday homes;Numerical, continuous;daa;Blumentrath et al. 2022;NINA report 2171;https://brage.nina.no/nina-xmlui/handle/11250/3027391;Samlet tomtereserve, inkludert nye planlagte hyttefelt og ledige tomter i delvis bebygde hyttefelt
-Holiday homes;hh_1970;holiday_homes_1970;Holiday homes, 1970;Number of holiday homes in 1970;Holiday homes;Numerical, integer;Count;Vonlanthen (1979);Available upon request;Vonlanthen, Peter (1979) Fritidshus i Norge 1970 - 1977. Notat. Oppland distrikshøgskole Lillehammer September 1979.;Fritidsboliger i Norge 1970
-Holiday homes;fribol_bol;hh_dwelling_ratio;Ratio: second homes/dwellings;Ratio of holiday homes to dwellings in the municipality;Holiday homes;Numerical, continuous;Proportion;Statistics Norway;Processed;NA;Forholdet mellom fritidsboliger og boliger i kommunen
-Holiday homes;median_price;median_hh_price;Median price, sold cabins;Median price for cabins sold on the open market ;Holiday homes;Numerical, continuous;Norwegian Kroner (NOK);;;;https://www.ssb.no/bygg-bolig-og-eiendom/eiendom/statistikk/eiendomsomsetning/artikler/hemsedal-hadde-de-dyreste-fjellhyttene/tabell-1.antall-solgte-hytter-i-fritt-salg-medianpris-og-gjennomsnittspris.kommune.2021
-Holiday homes;aa_fribol;prop_hh_area;Second home areas;Holiday home areas, proportion of municipal land area;Geography;Numerical, continuous;Proportion;Statistics Norway;Table 09280 & 09595;https://www.ssb.no/en/statbank/table/09594/;Fritidsboligområder, andel av kommunens landareal
-Physical geography;aa_våtmark;prop_wetlands;Wetland area cover;Wetland, proportion of municipal land area;Geography;Numerical, continuous;Proportion;Statistics Norway;Table 09280 & 09599;https://www.ssb.no/en/statbank/table/09594/;
-Physical geography;aa_fjell;prop_montainous;Mountain area cover;Mountain, proportion of municipal land area;Geography;Numerical, continuous;Proportion;Statistics Norway;Table 09280 & 09600;https://www.ssb.no/en/statbank/table/09594/;Fjell, andel av kommunens landareal
-Physical geography;elev_range;altitudinal_range;Altitudinal range;Total elevation difference in the municipality;Geography;Numerical, continuous;Meters;Norwegian mappping Authority;NA;NA;Hsamlet høydeforskjell i kommunen
-Physical geography;dist_coast;dist_to_coast;Average distance to the coast in the municipality;Geography;Numerical, continuous;Meters;Norwegian mappping Authority;Available upon request;NA;Gjennomsnittlig avstand til kyst i kommunen;
-Physical geography;veg_sections;veg_sections;Vegetation section;Vegetation sections (oceanic continental gradient);Geography;Numerical, continuous;Index value;Bakkestuen et al. 2008;Available upon request;https://doi.org/10.1111/j.1365-2699.2008.01941.x;Vegetasjonsseksjoner (osceanisk kontinental gradient)
-Physical geography;veg_zones;veg_zones;Vegetation zone;Vegetation zones (lowland-southern - alpine-northern gradient);Geography;Numerical, continuous;Index value;Bakkestuen et al. 2008;Available upon request;https://doi.org/10.1111/j.1365-2699.2008.01941.x;Vegetasjonssoner (lavland-sørlig - alpin-nordlig-gradient)
-Land use;andel_vern;prop_protected;Protected areas;Proportion of the municipality's area that is protected (Nature Diversity Act);Public planning and administration;Numerical, continuous;Proportion;Statistics Norway;Table 08936;https://www.ssb.no/en/statbank/table/08936;Andel av kommunens areal som er vernet (Naturmangfoldloven)
-Land use;grazing;grazing_livestock;Livestock grazing in outfield pastures during summer;;;;Animals;;;;
-Land use;infra_index;infrastructure_index;Land Use Intensity index;Average value for the infrastructure index;Geography;Numerical, continuous;Index value;Erikstad et al.;Available upon request;https://doi.org/10.3390/geomatics3010010;Gjennomsnittlig verdi for infrastrukturindeksen
-Population;bosatte_2022;population;Population;Population;Population;Population;Population;Population;Population;Population;Population
-Population;folk_2000_2020;population_change;Population change 2000–2022;Population change 2000–2023;Population change 2000–2024;Population change 2000–2025;Population change 2000–2026;Population change 2000–2027;Population change 2000–2028;Population change 2000–2029;Population change 2000–2030
-Population;medianalder;median_age;Median age;Mean and median age in municipalities 2021;Socio-economic;Numerical, continous;Years;Statistics Norway;Table 13536;https://www.ssb.no/en/statbank/table/13536;
-Population;andel_i_tettsted;urban_settlement_ratio;Degree of urbanisation;Proportion of the municipality's population in urban areas (SSB);Socio-economic;Numerical, continuous;Proportion;Statistics Norway;Table 05212;https://www.ssb.no/en/statbank/table/05212;Andel av kommunens innbyggere i tettsted (SSB)
-Population;pst_bosatt_gard;prop_farm_residents;Proportion of residents reciding on farms;;;;Proportion;;;;
-Population;befolkning_2h_avg;pop_2hr_drive;Number of inhabitants within a two-hour drive (average for plot reserves);Socio-economic;Numerical, continuous;Persons;Blumentrath et al. 2022;NINA report 2171;https://brage.nina.no/nina-xmlui/handle/11250/3027391;Antall inbyggere innenfor to timers kjøreavstand (gjennomsnitt for tomtereserver);
-Population;befolkning_4h_avg;pop_4hr_drive;Number of inhabitants within a four-hour drive (average for plot reserves);Socio-economic;Numerical, continuous;Persons;Blumentrath et al. 2022;NINA report 2171;https://brage.nina.no/nina-xmlui/handle/11250/3027391;Antall inbyggere innenfor fire timers kjøreavstand (gjennomsnitt for tomtereserver);
-Economy;median_inntekt;median_income;Median gross person income;Median income in the municipality;Socio-economic;Numerical, continuous;Norwegian Kroner (NOK);Statistics Norway;Table 05854;https://www.ssb.no/en/statbank/table/05854;Median inntekt i kommunen
-Economy;pst_lang_utdanning;education;Education;Proportion of the municipality's population with higher education;Socio-economic;Numerical, continuous;Proportion;Statistics Norway;Table 12134;https://www.ssb.no/en/statbank/table/12134;Andel av kommunens innbyggere med lang utdanning
-Economy;employed;employment_rate;Employment rate;Employed persons, by place of residence, sex and age (per cent), mean 2020–2022;Socio-economic;Numerical, continuous;Proportion;Statistics Norway;Table 06445;https://www.ssb.no/en/statbank/table/06445?loadedqueryid=10031668&timetype=from&timevalue=2018;
-Economy;private_sector;prop_private_sector;Proportion employed in private sector;Proportion of employees in private sector;;Numerical, continuous;Proportion;Statistics Norway;Available upon request;;
-Economy;net_driftres_pst;municipal_economy;Surplus, municipal economy;Net operating surplus as a percentage of gross operating revenues (per cent);Socio-economic;Numerical, continuous;Norwegian Kroner (NOK);Statistics Norway;Table 12134;https://www.ssb.no/en/statbank/table/12134;Kommuneøkonomi: netto driftsresultat
-Economy;frie_inntekter_2021;unrestricted_revenues;Revenues;Unrestricted revenues per capita (NOK);Socio-economic;Numerical, continuous;Norwegian Kroner (NOK);Statistics Norway;Table 12134;https://www.ssb.no/en/statbank/table/12134;Kommuneøkonomi
-Recreation;disp_motorferdsel;off_road_motor;Motorized traffic in nature areas;Applications for motor traffic on uncultivated areas and watercourses, by dispensation applications;Public planning and administration;Numerical, integer;Count;Statistics Norway;Table 13112;https://www.ssb.no/en/statbank/table/13112;Antall dispensasjoner, motorferdselloven
-Recreation;alpin_heiser;ski_lifts;Ski lifts;Number of ski lifts;Tourism and outdoor recreation;Numerical, integer;Ski lifts;Wikipedia;NA;https://no.wikipedia.org/wiki/Liste_over_norske_alpinanlegg;Antall skiheiser
-Recreation;dnt_hytter;hiker_cabins;Lodges and cabins, total;Number of Norwegian Trekking Association cabins;Tourism and outdoor recreation;Numerical, integer;Cabins;Norwegian Trekking Association;Available upon request;NA;Antal DNT-hytter
-Recreation;activity_data;activity_tracking_data;Activity tracking data from STRAVA;;;;;;;;
-Recreation;activity_per_person;activity_tracking_data;Activity tracking data from STRAVA divided by inhabitants in municipality;;;;;;Available upon request;;
-Recreation;kulturindeks;culture_index;Cultural index;An index providing an overview of cultural offerings and cultural activities in Norwegian municipalities.;?;Numerical, continous;Index value;Telemarksforskning;Norsk kulturindeks;https://kulturindeks.no/;Norsk kulturindeks er en årlig oversikt over kulturtilbud og kulturaktivitet i norske kommuner og fylker. 
+Category,Old abbreviation,Abbreviation,Variable,Description,Variable category,Statistical variable category,Unit,Original source,Details,Access original source,Norsk forklaring
+Basic information,region,region,Municipal number,Municipal number code,Holiday homes,Nominal,Administrative unit,Statistics Norway,Classification standard 131,https://www.ssb.no/klass/klassifikasjoner/131,SSB kommunenummer
+Basic information,kommune,municipality,Municipality,Municipalities according to the 2020 division,Holiday homes,Nominal,Administrative unit,Statistics Norway,Classification standard 131,https://www.ssb.no/klass/klassifikasjoner/131,
+Basic information,fylke,county,County,Counties according to the 2020 division,Holiday homes,Nominal,Administrative unit,Statistics Norway,Classification standard 106,https://www.ssb.no/klass/klassifikasjoner/104,Fylke etter inndeling fra 2020
+Basic information,kyst,coast,Coast,Indicates whether the municipality is a coastal municipality (1) or a municipality without a coastline (0),Geography,Dummy,0/1,Norwegian mappping Authority,Available upon request,NA,
+Basic information,hyttekomtype,hh_category,Type of second home municipality; coast,,,,,,,,
+Basic information,landareal,land_area,Municipal land area,Municipal land area in square kilometers,Geography,Numerical,,,,,
+Holiday homes,fribygg,holiday_homes,Holiday homes,Number of holiday homes 2022,,,,,,,
+Holiday homes,tomteres_km2,future_hh_area,Future holiday homes,,,,,,,,
+Holiday homes,hh_1970,holiday_homes_1970,Holiday homes,,,,,,,,
+Holiday homes,fribol_bol,hh_dwelling_ratio,Ratio: second homes/dwellings,Ratio of holiday homes to dwellings in the municipality,Holiday homes,Numerical,,,,,
+Holiday homes,median_price,median_hh_price,Median price,,,,,,,,
+Holiday homes,aa_fribol,prop_hh_area,Second home areas,Holiday home areas,,,,,,,
+Physical geography,aa_våtmark,prop_wetlands,Wetland area cover,Wetland,,,,,,,
+Physical geography,aa_fjell,prop_montainous,Mountain area cover,Mountain,,,,,,,
+Physical geography,elev_range,altitudinal_range,Altitudinal range,Total elevation difference in the municipality,Geography,Numerical,,,,,
+Physical geography,dist_coast,dist_to_coast,Average distance to the coast in the municipality,Geography,Numerical,,,,,,
+Physical geography,veg_sections,veg_sections,Vegetation section,Vegetation sections (oceanic continental gradient),Geography,Numerical,,,,,
+Physical geography,veg_zones,veg_zones,Vegetation zone,Vegetation zones (lowland-southern - alpine-northern gradient),Geography,Numerical,,,,,
+Land use,andel_vern,prop_protected,Protected areas,Proportion of the municipality's area that is protected (Nature Diversity Act),Public planning and administration,Numerical,,,,,
+Land use,grazing,grazing_livestock,Livestock grazing in outfield pastures during summer,,,,Animals,,,,
+Land use,infra_index,infrastructure_index,Land Use Intensity index,Average value for the infrastructure index,Geography,Numerical,,,,,
+Population,bosatte_2022,population,Population,Population,Population,Population,Population,Population,Population,Population,Population
+Population,folk_2000_2020,population_change,Population change 2000–2022,Population change 2000–2023,Population change 2000–2024,Population change 2000–2025,Population change 2000–2026,Population change 2000–2027,Population change 2000–2028,Population change 2000–2029,Population change 2000–2030
+Population,medianalder,median_age,Median age,Mean and median age in municipalities 2021,Socio-economic,Numerical,,,,,
+Population,andel_i_tettsted,urban_settlement_ratio,Degree of urbanisation,Proportion of the municipality's population in urban areas (SSB),Socio-economic,Numerical,,,,,
+Population,pst_bosatt_gard,prop_farm_residents,Proportion of residents reciding on farms,,,,Proportion,,,,
+Population,befolkning_2h_avg,pop_2hr_drive,Number of inhabitants within a two-hour drive (average for plot reserves),Socio-economic,Numerical,,,,,,
+Population,befolkning_4h_avg,pop_4hr_drive,Number of inhabitants within a four-hour drive (average for plot reserves),Socio-economic,Numerical,,,,,,
+Economy,median_inntekt,median_income,Median gross person income,Median income in the municipality,Socio-economic,Numerical,,,,,
+Economy,pst_lang_utdanning,education,Education,Proportion of the municipality's population with higher education,Socio-economic,Numerical,,,,,
+Economy,employed,employment_rate,Employment rate,Employed persons,,,,,,,
+Economy,private_sector,prop_private_sector,Proportion employed in private sector,Proportion of employees in private sector,,Numerical,,,,,
+Economy,net_driftres_pst,municipal_economy,Surplus,,,,,,,,
+Economy,frie_inntekter_2021,unrestricted_revenues,Revenues,Unrestricted revenues per capita (NOK),Socio-economic,Numerical,,,,,
+Recreation,disp_motorferdsel,off_road_motor,Motorized traffic in nature areas,Applications for motor traffic on uncultivated areas and watercourses,,,,,,,
+Recreation,alpin_heiser,ski_lifts,Ski lifts,Number of ski lifts,Tourism and outdoor recreation,Numerical,,,,,
+Recreation,dnt_hytter,hiker_cabins,Lodges and cabins,,,,,,,,
+Recreation,activity_data,activity_tracking_data,Activity tracking data from STRAVA,,,,,,,,
+Recreation,activity_per_person,activity_tracking_data,Activity tracking data from STRAVA divided by inhabitants in municipality,,,,,,Available upon request,,
+Recreation,kulturindeks,culture_index,Cultural index,An index providing an overview of cultural offerings and cultural activities in Norwegian municipalities.,?,Numerical,,,,,
