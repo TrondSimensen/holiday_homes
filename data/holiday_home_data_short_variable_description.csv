@@ -5,28 +5,28 @@ Basic information,county,Counties according to the 2020 division,Statistics Norw
 Basic information,coast,Municipality with (1) or without (0) coastline,NMA,Dummy
 Basic information,hh_category,Holiday home municipality category,Statistics Norway,Category
 Basic information,land_area,Municipal land area in square kilometers,Statistics Norway,Km2
-Holiday homes,holiday_homes,Number of holiday homes 2022,,
-Holiday homes,future_hh_area,Total areas set aside for future holiday home develompemt,Land use plans,Km2
+Holiday homes,holiday_homes,Number of holiday homes 2022,Statistics Norway,Count
+Holiday homes,future_hh_area,Total area for future holiday homes,Land use plans,Km2
 Holiday homes,holiday_homes_1970,Number of holiday homes in 1970,Vonlanthen 1979,Count
 Holiday homes,hh_dwelling_ratio,Ratio of holiday homes to dwellings,Statistics Norway,Proportion
 Holiday homes,median_hh_price,Median market price for holiday homes,Statistics Norway,NOK 
-Holiday homes,prop_hh_area,Holiday home areas,,
-Physical geography,prop_wetlands,Wetland,,
-Physical geography,prop_montainous,Mountain,,
-Physical geography,altitudinal_range,Total elevation difference,NMA,Meters
-Physical geography,dist_to_coast,Mean distance to coast,Available upon request,NMA
-Physical geography,veg_sections,Vegetation sections from oceanic to continental,Bakkestuen et al. 2008,Index value
-Physical geography,veg_zones,Vegetation zones from lowland to alpine,Bakkestuen et al. 2008,Index value
-Land use,prop_protected,Protected areas as land area,Statistics Norway,Proportion
-Land use,grazing_livestock,Grazing livestock in outfields during summer,Statistics Norway,Animals
-Land use,infrastructure_index,Average value for the infrastructure index,Erikstad et al. 2023,Index value
+Holiday homes,prop_hh_area,Existing holiday home areas,Statistics Norway,Proportion
+Physical geography,prop_wetlands,Wetland area,Statistics Norway,Proportion
+Physical geography,prop_montainous,Mountain area,Statistics Norway,Proportion
+Physical geography,altitudinal_range,Altitudinal range,NMA,Meters
+Physical geography,dist_to_coast,Mean distance to coast,NMA,Meters
+Physical geography,veg_sections,Vegetation sections; oceanic to continental,Ba. et al. 2008,Index value
+Physical geography,veg_zones,Vegetation zones; lowland to alpine,Ba. et al. 2009,Index value
+Land use,prop_protected,Nature conservation areas,Statistics Norway,Proportion
+Land use,grazing_livestock,Grazing livestock in outfields pastures,Statistics Norway,Animals
+Land use,infrastructure_index,Density of infrastructure,Er. et al. 2023,Index value
 Population,population,Population 2022,Statistics Norway,Population
 Population,population_change,Population change 2000 to 2023,Statistics Norway,People
 Population,median_age,Median age in municipality,Statistics Norway,Years
 Population,urban_settlement_ratio,Proportion living in urban areas,Statistics Norway,Proportion
 Population,prop_farm_residents,Proportion of residents living on farm,Statistics Norway,Proportion
-Population,pop_2hr_drive,Number of inhabitants within a two-hour drive ,Blumentrath et al. 2022,People
-Population,pop_4hr_drive,Number of inhabitants within a four-hour drive ,Blumentrath et al. 2022,People
+Population,pop_2hr_drive,Number of inhabitants within a two-hour drive ,NINA,People
+Population,pop_4hr_drive,Number of inhabitants within a four-hour drive ,NINA,People
 Economy,median_income,Median income in the municipality,Statistics Norway,NOK 
 Economy,education,Proportion of population with higher education,Statistics Norway,Proportion
 Economy,employment_rate,Employed persons,Statistics Norway,Proportion
@@ -35,7 +35,7 @@ Economy,municipal_economy,Municipal net operating surplus,Statistics Norway,NOK
 Economy,unrestricted_revenues,Unrestricted revenues per capita,Statistics Norway,NOK 
 Recreation,off_road_motor,Applications for motor traffic in nature areas,Statistics Norway,Count
 Recreation,ski_lifts,Number of ski lifts,Wikipedia,Ski lifts
-Recreation,hiker_cabins,Norwegian Trekking Association cabins,Norwegian Trekking Assoc,Cabins
-Recreation,activity_data,Total activity,,
-Recreation,activity_pr_person,Activity per person,,
-Recreation,culture_index,Cultural offerings and activities,Telemarksforskning,Index value
+Recreation,hiker_cabins,Norwegian Trekking Association cabins,Norw. Trek. Assoc,Cabins
+Recreation,activity_data,Total activity,Strava,Km
+Recreation,activity_pr_person,Activity per person,Strava,Km
+Recreation,culture_index,Cultural offerings and activities,Telemark RI,Index value

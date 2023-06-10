@@ -11,7 +11,7 @@ library(dotwhisker)
 library(gridExtra)
 library(ggpubr)
 library(sf)
-library(tmap)
+#library(tmap)
 library(factoextra)#derive results from prcomp, pca
 #theme_set(theme_minimal())
 
@@ -19,7 +19,7 @@ Sys.setlocale("LC_CTYPE", "norwegian")
 
 # Reading in data
 data <- read.csv("data/holiday_home_data.csv", 
-	header = TRUE, sep = ";", encoding = "latin") |> as_tibble()
+	header = TRUE, sep = ",", encoding = "latin") |> as_tibble()
 
 # Recoding variables and variable types
 data$region <- as.character(data$region)
@@ -132,7 +132,7 @@ summary_table
 
 # Read in variable descriptions
 variable_description <- readr::read_delim("data/holiday_home_data_short_variable_description.csv", 
-    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+    delim = ",", escape_double = FALSE, trim_ws = TRUE)
 View(variable_description)
 
 summary_table_1 <- dplyr::left_join(variable_description, summary_table, by = "Abbreviation")
@@ -165,7 +165,7 @@ View(final_table)
 
 
 # Save to CSV
-write.csv(final_table, "summary_statistics.csv", row.names = FALSE)
+write.csv(final_table, "tables/summary_statistics.csv", row.names = FALSE)
 
 # Print the summary table
 print(summary_table)
@@ -179,7 +179,7 @@ data_num <- data |> dplyr::select(-hh_category, -holiday_homes, -future_hh_area,
 correlations <- round(cor(data_num, method = "kendall"),2)
 correlations
 corrplot(correlations, method = 'number', order = "hclust")
-# write.csv(correlations, file = "correlations_mountains.csv", row.names = FALSE)
+write.csv(correlations, file = "tables/correlations_norway.csv", row.names = FALSE)
 
 # Extract response variables ---------------------------------------------------------
 response1 <- data |> dplyr::select(holiday_homes) 
@@ -253,7 +253,6 @@ summary_cor_with_response
 
 # Print the updated dataframe
 print(summary_cor_with_response)
-write.csv(summary_cor_with_response, file = "supplementary_material/correlations_with_response_variables_mountain.csv", row.names = FALSE)
+write.csv(summary_cor_with_response, file = "tables/correlations_with_response_variables_norway.csv", row.names = FALSE)
 
-# Write the output from summary_cor_with_response to the clipboard
-write.table(summary_cor_with_response, file = "clipboard", sep = "\t", row.names = FALSE)
+
