@@ -9,7 +9,7 @@
 "Physical geography","prop_wetlands","Wetland area","Statistics Norway","Proportion",0,0,0.31,0.04,0.04
 "Physical geography","prop_montainous","Mountain area","Statistics Norway","Proportion",0,0,0.4,0.06,0.08
 "Physical geography","altitudinal_range","Altitudinal range","NMA","Meters",0,21,2350,938.16,515.19
-"Physical geography","dist_to_coast","Mean distance to coast","NMA","NMA",0,0.39,179319.55,26720.96,37776.71
+"Physical geography","dist_to_coast","Mean distance to coast","NMA","Meters",0,0.39,179319.55,26720.96,37776.71
 "Physical geography","veg_sections","Vegetation sections; oceanic to continental","Ba. et al. 2008","Index value",0,-3.84,3.48,-0.4,1.35
 "Physical geography","veg_zones","Vegetation zones; lowland to alpine","Ba. et al. 2009","Index value",0,-2.85,3.84,0.89,1.45
 "Land use","prop_protected","Nature conservation areas","Statistics Norway","Proportion",6,0,0.81,0.13,0.17
