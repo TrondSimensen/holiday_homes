@@ -85,7 +85,7 @@ hytter_recipe <-
   # convert specific variable(s) to dummy variables
   #step_dummy(kyst_f) %>%
 	# 3 Individual transformations for skewness and other issues
-	# step_YeoJohnson(all_numeric()) |> 
+	step_YeoJohnson(all_numeric()) |> 
 	# 4 Create interactions
 	# 5 Normalization steps (center, scale, range, etc)
 #   step_center(all_numeric()) |> 
@@ -200,6 +200,106 @@ pca_cor_axis2
 # print the results
 pca_cor_axis2 |> slice(1:10)
 
+
+# Axis three ----------------------------------------------------------------
+
+# create empty data frame for axis 3 correlations and p-values
+pca_cor_axis3 <- data.frame(variable = colnames(preprocessed_data),
+                            cor = numeric(ncol(preprocessed_data)),
+                            p_value = numeric(ncol(preprocessed_data)),
+                            stringsAsFactors = FALSE)
+
+# calculate correlations and p-values for axis 3
+for (i in seq_along(pca_cor_axis3$variable)) {
+  # calculate correlation and p-value
+  cor_res <- cor.test(pca_results$x[, 3], as.matrix(preprocessed_data)[, i], method = "kendall")
+  # store results in data frame
+  pca_cor_axis3$cor[i] <- cor_res$estimate
+  pca_cor_axis3$p_value[i] <- cor_res$p.value
+}
+
+# sort by absolute correlation values (descending)
+pca_cor_axis3 <- pca_cor_axis3[order(abs(pca_cor_axis3$cor), decreasing = TRUE), ]
+
+# print the results
+pca_cor_axis3
+
+# sort by absolute correlation values (descending)
+pca_cor_axis3 <- pca_cor_axis3[order(abs(pca_cor_axis3$cor), decreasing = TRUE), ]
+pca_cor_axis3 
+
+# print the top 10 results
+pca_cor_axis3 |> slice(1:10)
+
+# Axis four ----------------------------------------------------------------
+
+# create empty data frame for axis 4 correlations and p-values
+pca_cor_axis4 <- data.frame(variable = colnames(preprocessed_data),
+                            cor = numeric(ncol(preprocessed_data)),
+                            p_value = numeric(ncol(preprocessed_data)),
+                            stringsAsFactors = FALSE)
+
+# calculate correlations and p-values for axis 4
+for (i in seq_along(pca_cor_axis4$variable)) {
+  # calculate correlation and p-value
+  cor_res <- cor.test(pca_results$x[, 4], as.matrix(preprocessed_data)[, i], method = "kendall")
+  # store results in data frame
+  pca_cor_axis4$cor[i] <- cor_res$estimate
+  pca_cor_axis4$p_value[i] <- cor_res$p.value
+}
+
+# sort by absolute correlation values (descending)
+pca_cor_axis4 <- pca_cor_axis4[order(abs(pca_cor_axis4$cor), decreasing = TRUE), ]
+
+# print the results
+pca_cor_axis4
+
+# sort by absolute correlation values (descending)
+pca_cor_axis4 <- pca_cor_axis4[order(abs(pca_cor_axis4$cor), decreasing = TRUE), ]
+pca_cor_axis4 
+
+# print the top 10 results
+pca_cor_axis4 |> slice(1:10)
+
+pca_cor_axis1
+
+# Make one table with output for first four axes
+
+# Function to format p-values
+format_p_value <- function(p_value) {
+  ifelse(p_value < 0.001, "<0.001", round(p_value, 3))
+}
+
+# Format p-values
+pca_cor_axis1$p_value <- sapply(pca_cor_axis1$p_value, format_p_value)
+pca_cor_axis2$p_value <- sapply(pca_cor_axis2$p_value, format_p_value)
+pca_cor_axis3$p_value <- sapply(pca_cor_axis3$p_value, format_p_value)
+pca_cor_axis4$p_value <- sapply(pca_cor_axis4$p_value, format_p_value)
+
+# Round correlations
+pca_cor_axis1$cor <- round(pca_cor_axis1$cor, 3)
+pca_cor_axis2$cor <- round(pca_cor_axis2$cor, 3)
+pca_cor_axis3$cor <- round(pca_cor_axis3$cor, 3)
+pca_cor_axis4$cor <- round(pca_cor_axis4$cor, 3)
+
+# Rename columns before joining
+colnames(pca_cor_axis1) <- c("variable", "cor_pca1", "p_value1")
+colnames(pca_cor_axis2) <- c("variable", "cor_pca2", "p_value2")
+colnames(pca_cor_axis3) <- c("variable", "cor_pca3", "p_value3")
+colnames(pca_cor_axis4) <- c("variable", "cor_pca4", "p_value4")
+
+# Merge all the results
+final_result_pca <- full_join(pca_cor_axis1, pca_cor_axis2, by = "variable") %>%
+  full_join(., pca_cor_axis3, by = "variable") %>%
+  full_join(., pca_cor_axis4, by = "variable") %>%
+  arrange(as.numeric(row.names(pca_cor_axis1)))
+
+# Print the results
+final_result_pca
+
+# Save to CSV
+write.csv(final_result_pca, "tables/cor_pca_axes_1_2_3_4_holiday_homes_mountains.csv", row.names = FALSE)
+
 # Key outputs of the PCA --------------------------------------------------
 
 # create a scree plot of the eigenvalues
@@ -215,7 +315,7 @@ var_exp_df <- data.frame(PC = paste0("PC", 1:length(var_exp)),
 print(var_exp_df, row.names = FALSE)
 
 # plot the cumulative variance explained
-ggplot(var_exp_df, aes(x = PC, y = Cumulative.Variance.Explained)) + 
+ggplot(var_exp_df [1:9,], aes(x = PC, y = Cumulative.Variance.Explained)) + 
   geom_line() + 
   geom_point() + 
   scale_y_continuous(labels = scales::percent_format()) +
@@ -542,7 +642,7 @@ juice(hytter_recipe) %>%
 	geom_vline(xintercept = 0, linetype="dashed", color = "darkgrey")+
 	geom_hline(yintercept=0, linetype="dashed", color = "darkgrey")+
   geom_point(aes(color = county, shape=county), size = 2, alpha = 0.8) +
-  geom_point(aes(color = county), size = 2, alpha = 0.6) +
+  #geom_point(aes(color = county), size = 2, alpha = 0.6) +
   scale_colour_manual(values=cbp1) +
   geom_segment(data = arrows_updated,
                aes(x = 0, y = 0, xend = PC1 * 20, yend = PC2 * 20), # control arrow length
@@ -579,7 +679,7 @@ juice(hytter_recipe) %>%
 fig_3
 
 
-ggsave("P:/15022000_egenutvikling_trond_simensen/Spatial_regression/Paper/illustrations/figure3.png", 
+ggsave("plots/pca_mountains.png", 
 	fig_3, scale = 2, bg = "white", width = 16, height = 8, units = "cm", dpi = 600)
 
 

@@ -16,7 +16,7 @@
 "Land use","grazing_livestock","Grazing livestock in outfields pastures","Statistics Norway","Animals",0,0,46114,6245.08,6779.85
 "Land use","infrastructure_index","Density of infrastructure","Er. et al. 2023","Index value",0,0.18,10.13,2.89,1.98
 "Population","population","Population 2022","Statistics Norway","Population",0,188,699827,15246.17,44955.9
-"Population","population_change","Population change 2000 to 2023","Statistics Norway","People",0,-37.73,96.55,4.38,18.04
+"Population","population_change","Population change 2000 to 2023","Statistics Norway","Percentage",0,-37.73,96.55,4.38,18.04
 "Population","median_age","Median age in municipality","Statistics Norway","Years",0,35,54,44.11,4.15
 "Population","urban_settlement_ratio","Proportion living in urban areas","Statistics Norway","Proportion",0,0,1,0.55,0.27
 "Population","prop_farm_residents","Proportion of residents living on farm","Statistics Norway","Proportion",0,0,49.4,16.74,11.38

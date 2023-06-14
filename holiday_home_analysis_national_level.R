@@ -133,10 +133,10 @@ summary_table
 # Read in variable descriptions
 variable_description <- readr::read_delim("data/holiday_home_data_short_variable_description.csv", 
     delim = ",", escape_double = FALSE, trim_ws = TRUE)
-View(variable_description)
+#View(variable_description)
 
 summary_table_1 <- dplyr::left_join(variable_description, summary_table, by = "Abbreviation")
-View(summary_table_1)
+#View(summary_table_1)
 
 # Filter out rows with specific Abbreviations
 filtered_table <- summary_table_1 %>%
@@ -161,7 +161,7 @@ reordered_table <- without_land_area %>%
 final_table <- select(reordered_table, -Categories)
 
 # The final_table is the filtered, reordered table without the "Categories" column
-View(final_table)
+# View(final_table)
 
 
 # Save to CSV
@@ -873,10 +873,10 @@ arr <- pca_wider |>
 "holiday_homes",
 "holiday_homes_1970",
 "activity_pr_person",
-"hiker_cabins",
+#"hiker_cabins",
 "ski_lifts",
 "dist_to_coast",
-"land_area",
+#"land_area",
 "future_hh_area",
 "altitudinal_range"))
 
@@ -897,10 +897,10 @@ arrows_updated <- arr %>%
     terms == "holiday_homes" ~  "Holiday homes",
     terms == "holiday_homes_1970" ~  "HH 1970",
     terms == "activity_pr_person" ~  "Activity pr person",
-    terms == "hiker_cabins" ~  "Hiker cabins",
+    #terms == "hiker_cabins" ~  "Hiker cabins",
     terms == "ski_lifts" ~  "Ski lifts",
-    terms == "dist_to_coast" ~  "Distance to coast",
-    terms == "land_area" ~  "Land area",
+    terms == "dist_to_coast" ~  "Inland",
+    #terms == "land_area" ~  "Land area",
     terms == "future_hh_area" ~  "Future HH area",
     terms == "altitudinal_range" ~  "Altitudinal range",
     TRUE ~ as.character(terms)
@@ -937,18 +937,6 @@ juice(hytter_recipe) %>%
   xlab("Principal component 1 (28.1 % variation explained)") +
   ylab("Principal component 2 (15.2 % variation explained)")
 
-library(ggplot2)
-
-library(ggplot2)
-
-library(ggplot2)
-
-library(ggplot2)
-
-library(ggplot2)
-
-library(ggplot2)
-
 fig_3 <- juice(hytter_recipe) %>%
   ggplot(aes(PC1, PC2)) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "darkgrey") +
@@ -957,12 +945,12 @@ fig_3 <- juice(hytter_recipe) %>%
   scale_colour_manual(values = cbp1) +
   scale_shape_manual(values = c(16, 15, 17)) +
   geom_segment(data = arrows_updated,
-               aes(x = 0, y = 0, xend = PC1 * 20, yend = PC2 * 20),
+               aes(x = 0, y = 0, xend = PC1 * 16, yend = PC2 * 16),
                arrow = arrow(length = unit(1/2, "picas")),
                color = "grey39") +
   annotate("text",
-           x = arrows_updated$PC1 * 21.2,
-           y = arrows_updated$PC2 * 21.2,
+           x = arrows_updated$PC1 * 17,
+           y = arrows_updated$PC2 * 17,
            label = arrows_updated$terms_updated) +
   labs(fill = "New Legend Title") +  # Change the legend title
   theme_bw()+

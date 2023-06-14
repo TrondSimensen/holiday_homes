@@ -21,7 +21,7 @@ Land use,prop_protected,Nature conservation areas,Statistics Norway,Proportion
 Land use,grazing_livestock,Grazing livestock in outfields pastures,Statistics Norway,Animals
 Land use,infrastructure_index,Density of infrastructure,Er. et al. 2023,Index value
 Population,population,Population 2022,Statistics Norway,Population
-Population,population_change,Population change 2000 to 2023,Statistics Norway,People
+Population,population_change,Population change 2000 to 2023,Statistics Norway,Percentage
 Population,median_age,Median age in municipality,Statistics Norway,Years
 Population,urban_settlement_ratio,Proportion living in urban areas,Statistics Norway,Proportion
 Population,prop_farm_residents,Proportion of residents living on farm,Statistics Norway,Proportion
