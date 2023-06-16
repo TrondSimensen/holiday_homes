@@ -601,6 +601,36 @@ hytter_pc1_pc2_pc3_pc4 %>%
     y = NULL, fill = "Positive?"
   ) 
 
+
+
+# Open PDF device
+pdf("plots/PCA_loadings_Holiday_Homes_in_Norway.pdf", width = 8.27, height = 11.69) # A4 size in inches
+
+# plot these loadings by principal component
+
+hytter_pc1_pc2_pc3_pc4 %>%
+  mutate(terms = tidytext::reorder_within(terms, 
+                                          abs(value), 
+                                          component)) %>%
+  ggplot(aes(abs(value), terms, fill = value > 0)) +
+  geom_col() +
+  facet_wrap(~component, scales = "free_y") +
+  tidytext::scale_y_reordered() +
+  scale_fill_manual(values = c("#b6dfe2", "#0A537D")) +
+  labs(
+    x = "Absolute value of contribution",
+    y = NULL,
+    fill = "Positive?",
+    title = "Loadings by principal component 1-4\nHoliday homes in Norway"
+  ) 
+
+
+# Close PDF device
+dev.off()
+
+
+
+
 # Selecting the first four axes
 hytter_pc1_pc2 <-  hytter_pca |> filter(component == "PC1"|component == "PC2")
 
@@ -646,6 +676,7 @@ glimpse(pca_wider)
 
 # Save to CSV
 write.csv(pca_wider, "tables/pca__loadings_holiday_homes_norway.csv", row.names = FALSE)
+
 
 hytter_pca
 
@@ -893,7 +924,7 @@ arrows_updated <- arr %>%
     #terms == "urban_settlement_ratio" ~  "Urban",
     terms == "prop_farm_residents" ~  "Farm residents",
     terms == "median_age" ~  "Median age",
-    #terms == "pop_2hr_drive" ~  "Pop 2hr drive",
+    terms == "pop_2hr_drive" ~  "Pop. 2hr drive",
     terms == "holiday_homes" ~  "Holiday homes",
     terms == "holiday_homes_1970" ~  "HH 1970",
     terms == "activity_pr_person" ~  "Activity pr person",
@@ -937,11 +968,11 @@ juice(hytter_recipe) %>%
   xlab("Principal component 1 (28.1 % variation explained)") +
   ylab("Principal component 2 (15.2 % variation explained)")
 
-fig_3 <- juice(hytter_recipe) %>%
+fig_pca <- juice(hytter_recipe) %>%
   ggplot(aes(PC1, PC2)) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "darkgrey") +
   geom_hline(yintercept = 0, linetype = "dashed", color = "darkgrey") +
-  geom_point(aes(color = hh_category, shape = hh_category), size = 2, alpha = 0.8) +
+  geom_point(aes(color = hh_category, shape = hh_category), size = 2.5, alpha = 1) +
   scale_colour_manual(values = cbp1) +
   scale_shape_manual(values = c(16, 15, 17)) +
   geom_segment(data = arrows_updated,
@@ -951,7 +982,7 @@ fig_3 <- juice(hytter_recipe) %>%
   annotate("text",
            x = arrows_updated$PC1 * 17,
            y = arrows_updated$PC2 * 17,
-           label = arrows_updated$terms_updated) +
+           label = arrows_updated$terms_updated, size = 4) +
   labs(fill = "New Legend Title") +  # Change the legend title
   theme_bw()+
   xlab("Principal component 1 (28.1 % variation explained)") +
@@ -960,12 +991,31 @@ fig_3 <- juice(hytter_recipe) %>%
         legend.title = element_blank(),
         legend.text = element_text(size = 1.1 * rel(1)))  # Increase the size of legend text
 
-fig_3
+fig_pca
 
 
-ggsave("plots/figure3.png", 
-	fig_3, scale = 2, bg = "white", width = 15, height = 12, units = "cm", dpi = 600)
+ggsave("plots/fig_pca.png", 
+	fig_pca, scale = 2, bg = "white", width = 15, height = 10, units = "cm", dpi = 600)
 
 
+fig_s_pca_with_names <- juice(hytter_recipe) %>%
+  ggplot(aes(PC1, PC2, label = municipality)) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "darkgrey") +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "darkgrey") +
+  geom_point(aes(fill = county), shape = 21, color = "grey30", size = 3, alpha = 1) +
+  scale_fill_brewer(palette = "Paired") + # Using "Paired" palette from RColorBrewer
+  geom_text(color = "grey1", check_overlap = TRUE,  vjust = "bottom", nudge_y = 0.1, family = "IBMPlexSans") +
+  labs(fill = "New Legend Title") +  # Change the legend title
+  theme_bw() +
+  xlab("Principal component 1 (28.1 % variation explained)") +
+  ylab("Principal component 2 (15.2 % variation explained)") +
+  theme(axis.title = element_text(size = 1.1 * rel(1)),
+        legend.title = element_blank(),
+        legend.text = element_text(size = 1.1 * rel(1)))  # Increase the size of legend text
+
+fig_s_pca_with_names
+
+ggsave("plots/fig_s_pca_with_names.png", 
+	fig_s_pca_with_names, scale = 2, bg = "white", width = 15, height = 10, units = "cm", dpi = 600)
 
 
