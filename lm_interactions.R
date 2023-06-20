@@ -78,6 +78,7 @@ summary(modAll_futureHH)
 #     - veg:landuse, veg:recr
 #     - pop:recr
 
+
 ## Find most parsimonious model by AIC (generally favours models with more parameters)
 modRank_currentHH <- MuMIn::dredge(modAll_currentHH, rank = "AICc", extra = c("R^2", "adjR^2", "BIC")) 
 write.csv(modRank_currentHH, file = "modRank_currentHH.csv", row.names = FALSE)
@@ -85,4 +86,47 @@ write.csv(modRank_currentHH, file = "modRank_currentHH.csv", row.names = FALSE)
 ## Find most parsimonious model by BIC (generally favours models with less parameters)
 modRank_futureHH <- MuMIn::dredge(modAll_futureHH, rank = "BIC", extra = c("R^2", "adjR^2", "BIC")) 
 write.csv(modRank_futureHH, file = "modRank_futureHH.csv", row.names = FALSE)
+
+
+## Make reduced mother models based on strength of evidence in full models
+modRed_currentHH <- lm(holiday_homes ~
+                         pastHH + coast + veg + landuse + pop + econ + recr + 
+                         pastHH:recr +
+                         coast:veg + coast:landuse + coast:pop + coast:econ + coast:recr +
+                         veg:pop + veg:recr +
+                         landuse:pop + landuse:econ + landuse:recr +
+                         pop:recr,
+                         data = data_z, na.action = "na.fail")
+
+modRed_futureHH <- lm(future_hh_area ~
+                        pastHH + coast + veg + landuse + pop + econ + recr + 
+                        pastHH:coast + pastHH:veg + pastHH:pop + pastHH:recr +
+                        coast:veg + coast:landuse + coast:recr +
+                        veg:landuse + veg:recr +
+                        pop:recr, 
+                      data = data_z, na.action = "na.fail")
+
+summary(modRed_currentHH)
+summary(modRed_futureHH)
+
+## Find most parsimonious model by AIC (generally favours models with more parameters)
+modRank_currentHH <- MuMIn::dredge(modRed_currentHH, rank = "AICc", extra = c("R^2", "adjR^2", "BIC")) 
+write.csv(modRank_currentHH, file = "modRank_currentHH.csv", row.names = FALSE)
+
+# Least parameters among most parsimonious in terms of AICc and BIC (delta < 2)
+#  pastHH + coast + veg + landuse + pop + econ + recr + 
+#  coast:veg + coast:landuse + coast:recr +
+#  veg:pop + 
+#  landuse:pop + landuse:recr
+
+## Find most parsimonious model by BIC (generally favours models with less parameters)
+modRank_futureHH <- MuMIn::dredge(modRed_futureHH, rank = "AICc", extra = c("R^2", "adjR^2", "BIC")) 
+write.csv(modRank_futureHH, file = "modRank_futureHH.csv", row.names = FALSE)
+
+# Least parameters among most parsimonious in terms of AICc and BIC (delta < 2)
+#pastHH + coast + veg + landuse +
+#coast:veg + coast:landuse + 
+#veg:landuse
+
+
 
