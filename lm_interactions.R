@@ -27,7 +27,9 @@ data_z <- data_z %>%
                 landuse = infrastructure_index,
                 pop = population_change,
                 econ = unrestricted_revenues,
-                recr = activity_data)
+                recr = activity_data) %>%
+  dplyr::mutate(holiday_homes = log(holiday_homes),
+                future_hh_area = sqrt(future_hh_area))
 
 ## Check correlations among explanatory variables
 M <- cor(data_z[,6:12])
