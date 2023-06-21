@@ -65,17 +65,17 @@ modAll_futureHH <- lm(future_hh_area ~
 
 ## Check mother model summaries
 summary(modAll_currentHH)
-# --> Evidence for all independent effects and the following interactions:
-#     - coast:veg, coast:landuse, coast:pop, coast:econ
-#     - veg:pop, veg:recr
-#     - landuse:pop, landuse:econ, landuse:rec
-#     - pop:recr
+# --> Evidence for all independent effects except landuse and the following interactions:
+#     - coast:pop, coast:recr
+#     - veg:econ
+#     - landuse:econ
+#     - pop:recr, econ:recr
 
 summary(modAll_futureHH)
-# --> Evidence for independent effects of pastHH and veg and the following interactions:
-#     - pastHH:coast, pastHH:veg, pastHH:pop
-#     - coast:veg, coast:landuse
-#     - veg:landuse, veg:recr
+# --> Evidence for independent effects of pastHH, coast, and veg and the following interactions:
+#     - pastHH:veg, pastHH:pop
+#     - coast:veg, coast:landuse, coast:pop
+#     - veg:recr
 #     - pop:recr
 
 
@@ -89,21 +89,21 @@ write.csv(modRank_futureHH, file = "modRank_futureHH.csv", row.names = FALSE)
 
 
 ## Make reduced mother models based on strength of evidence in full models
+#  (include interactions only if p in full model < 0.2)
 modRed_currentHH <- lm(holiday_homes ~
                          pastHH + coast + veg + landuse + pop + econ + recr + 
-                         pastHH:recr +
-                         coast:veg + coast:landuse + coast:pop + coast:econ + coast:recr +
-                         veg:pop + veg:recr +
+                         coast:pop + coast:econ + coast:recr +
+                         veg:econ +
                          landuse:pop + landuse:econ + landuse:recr +
-                         pop:recr,
+                         pop:recr + econ:recr,
                          data = data_z, na.action = "na.fail")
 
 modRed_futureHH <- lm(future_hh_area ~
                         pastHH + coast + veg + landuse + pop + econ + recr + 
                         pastHH:coast + pastHH:veg + pastHH:pop + pastHH:recr +
-                        coast:veg + coast:landuse + coast:recr +
+                        coast:veg + coast:landuse + coast:pop +
                         veg:landuse + veg:recr +
-                        pop:recr, 
+                        pop:econ + pop:recr, 
                       data = data_z, na.action = "na.fail")
 
 summary(modRed_currentHH)
@@ -111,22 +111,28 @@ summary(modRed_futureHH)
 
 ## Find most parsimonious model by AIC (generally favours models with more parameters)
 modRank_currentHH <- MuMIn::dredge(modRed_currentHH, rank = "AICc", extra = c("R^2", "adjR^2", "BIC")) 
-write.csv(modRank_currentHH, file = "modRank_currentHH.csv", row.names = FALSE)
+write.csv(modRank_currentHH, file = "modRank_reduced_currentHH.csv", row.names = FALSE)
 
 # Least parameters among most parsimonious in terms of AICc and BIC (delta < 2)
 #  pastHH + coast + veg + landuse + pop + econ + recr + 
-#  coast:veg + coast:landuse + coast:recr +
-#  veg:pop + 
-#  landuse:pop + landuse:recr
+#  coast:pop + coast:econ + coast:recr +
+#  landuse:pop + landuse:recr +
+#  pop:recr + econ:recr
 
 ## Find most parsimonious model by BIC (generally favours models with less parameters)
 modRank_futureHH <- MuMIn::dredge(modRed_futureHH, rank = "AICc", extra = c("R^2", "adjR^2", "BIC")) 
-write.csv(modRank_futureHH, file = "modRank_futureHH.csv", row.names = FALSE)
+write.csv(modRank_futureHH, file = "modRank_reduced_futureHH.csv", row.names = FALSE)
 
-# Least parameters among most parsimonious in terms of AICc and BIC (delta < 2)
-#pastHH + coast + veg + landuse +
-#coast:veg + coast:landuse + 
-#veg:landuse
+# Least parameters among most parsimonious in terms of AICc
+#  pastHH + coast + veg + landuse + pop + recr + 
+#  pastHH:coast + pastHH:veg + pastHH:pop + pastHH:recr +
+#  coast:veg + coast:landuse + coast:pop +
+#  veg:landuse + veg:recr +
+#  pop:recr
 
+# Least parameters among most parsimonious in terms of BIC
+#  pastHH + coast + veg + landuse +
+#  coast:landuse +
+#  veg:landuse
 
 
